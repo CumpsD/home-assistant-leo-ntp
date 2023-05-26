@@ -6,7 +6,7 @@ from typing import Final
 from homeassistant.const import Platform
 
 CONF_UPDATE_INTERVAL = "update_interval"
-DEFAULT_UPDATE_INTERVAL = 1
+DEFAULT_UPDATE_INTERVAL = 10
 
 PLATFORMS: Final = [Platform.SENSOR]
 
