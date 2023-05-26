@@ -25,7 +25,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     client = LeoNtpClient(
         host = entry.data[CONF_HOST],
-        update_interva = entry.data[CONF_UPDATE_INTERVAL]
+        update_interval = entry.data[CONF_UPDATE_INTERVAL]
         if CONF_UPDATE_INTERVAL in entry.data
         else DEFAULT_UPDATE_INTERVAL,
     )
