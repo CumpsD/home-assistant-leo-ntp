@@ -1,9 +1,16 @@
 """Constants used by LeoNTP."""
 import json
 from pathlib import Path
+from typing import Final
+
+from homeassistant.const import Platform
 
 CONF_UPDATE_INTERVAL = "update_interval"
 DEFAULT_UPDATE_INTERVAL = 1
+
+PLATFORMS: Final = [Platform.SENSOR]
+
+ATTRIBUTION: Final = "Data provided by LeoNTP"
 
 manifestfile = Path(__file__).parent / "manifest.json"
 with open(manifestfile) as json_file:
@@ -24,3 +31,5 @@ If you have any issues with this you need to open an issue here:
 """.format(
     name=NAME, version=VERSION, issueurl=ISSUEURL
 )
+
+WEBSITE = "https://www.leobodnar.com/"

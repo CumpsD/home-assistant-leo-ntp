@@ -28,22 +28,29 @@ def float_to_timestring(float_time, unit_type) -> str:
     """Transform float to timestring."""
     if type(float_time) is str:
         float_time = str_to_float(float_time)
+
     if unit_type.lower() == "seconds":
         float_time = float_time * 60 * 60
     elif unit_type.lower() == "minutes":
         float_time = float_time * 60
+
     # log_debug(f"[float_to_timestring] Float Time {float_time}")
     hours, seconds = divmod(float_time, 3600)  # split to hours and seconds
     minutes, seconds = divmod(seconds, 60)  # split the seconds to minutes and seconds
     result = ""
+
     if hours:
         result += f" {hours:02.0f}" + "h"
+
     if minutes:
         result += f" {minutes:02.0f}" + " min"
+
     if seconds:
         result += f" {seconds:02.0f}" + " sec"
+
     if len(result) == 0:
         result = "0 sec"
+
     return result.strip()
 
 
@@ -66,7 +73,9 @@ def sizeof_fmt(num, suffix="b"):
     for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
         if abs(num) < 1024.0:
             return f"{num:3.1f}{unit}{suffix}"
+
         num /= 1024.0
+
     return f"{num:.1f}Yi{suffix}"
 
 
@@ -74,6 +83,8 @@ def get_json_dict_path(dictionary, path):
     """Fetch info based on jsonpath from dict."""
     # log_debug(f"[get_json_dict_path] Path: {path}, Dict: {dictionary}")
     json_dict = jsonpath(dictionary, path)
+
     if isinstance(json_dict, list):
         json_dict = json_dict[0]
+
     return json_dict

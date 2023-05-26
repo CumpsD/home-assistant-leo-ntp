@@ -1,6 +1,4 @@
 """Models used by LeoNTP."""
-from __future__ import annotations
-
 from dataclasses import dataclass
 from dataclasses import field
 from typing import TypedDict
@@ -11,11 +9,6 @@ class LeoNtpConfigEntryData(TypedDict):
 
     host: str | None
     update_interval: int | None
-
-
-@dataclass
-class LeoNtpEnvironment:
-    """Class to describe a LeoNTP environment."""
 
 
 @dataclass

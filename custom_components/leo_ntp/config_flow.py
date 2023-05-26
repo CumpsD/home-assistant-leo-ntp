@@ -82,6 +82,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             user_input = self.new_data() | user_input
             test = await self.test_connection(user_input)
             log_debug(test)
+
             if not test["errors"]:
                 self.new_title = test["profile"].get("name")
                 self.new_entry_data |= user_input
@@ -89,7 +90,9 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
                 self._abort_if_unique_id_configured()
                 log_debug(f"New account {self.new_title} added")
                 return self.finish_flow()
+
             errors = test["errors"]
+
         fields = {
             vol.Required(CONF_HOST): TextSelector(
                 TextSelectorConfig(type=TextSelectorType.TEXT, autocomplete="host")
@@ -100,6 +103,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
                 NumberSelectorConfig(min=1, max=60, step=1, mode=NumberSelectorMode.BOX)
             ),
         }
+
         return self.async_show_form(
             step_id="connection_init",
             data_schema=vol.Schema(fields),
@@ -113,6 +117,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
 
         if user_input is not None:
             user_input = self.new_data() | user_input
+
             try:
                 profile = await self.async_validate_input(user_input)
             except AssertionError as exception:
@@ -125,6 +130,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             except Exception as exception:
                 errors["base"] = "unknown"
                 log_debug(exception)
+
         return {"profile": profile, "errors": errors}
 
     async def async_step_host(self, user_input: dict | None = None) -> FlowResult:
@@ -134,6 +140,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
         if user_input is not None:
             user_input = self.new_data() | user_input
             test = await self.test_connection(user_input)
+
             if not test["errors"]:
                 self.new_entry_data |= LeoNtpConfigEntryData(
                     host=user_input[CONF_HOST],
@@ -143,6 +150,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
         fields = {
             vol.Required(CONF_HOST): cv.string,
         }
+
         return self.async_show_form(
             step_id="host",
             data_schema=self.add_suggested_values_to_schema(
@@ -191,14 +199,17 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
     def finish_flow(self) -> FlowResult:
         """Update the ConfigEntry and finish the flow."""
         new_data = DEFAULT_ENTRY_DATA | self.initial_data | self.new_entry_data
+
         self.hass.config_entries.async_update_entry(
             self.config_entry,
             data=new_data,
             title=self.new_title or UNDEFINED,
         )
+
         self.hass.async_create_task(
             self.hass.config_entries.async_reload(self.config_entry.entry_id)
         )
+
         return self.async_create_entry(title="", data={})
 
     async def async_step_init(
