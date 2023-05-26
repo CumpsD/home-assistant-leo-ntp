@@ -5,6 +5,8 @@ from typing import Final
 
 from homeassistant.const import Platform
 
+SHOW_DEBUG_AS_WARNING = False
+
 CONF_UPDATE_INTERVAL = "update_interval"
 DEFAULT_UPDATE_INTERVAL = 10
 
