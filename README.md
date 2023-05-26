@@ -56,7 +56,7 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 
 ## Troubleshooting
 
-1. You can enable logging for this integration specifically and share your logs, so I can have a deep dive investigation. To enable logging, update your `configuration.yaml` like this, we can get more information in Configuration -> Logs page
+1. You can enable logging for this integration specifically and share your logs, so I can have a deep dive investigation. To enable logging, update your `configuration.yaml` like this, so we can get more information in the `Configuration` -> `Logs` page.
 
 ```
 logger:
