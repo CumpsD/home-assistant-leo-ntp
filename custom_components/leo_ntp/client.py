@@ -58,7 +58,7 @@ class LeoNtpClient:
 
             serial_number = struct.unpack('<H', response_packet[42:44])[0]
 
-            data["id"] = serial_number
+            data["id"] = f"{serial_number}"
 
         return data
 
