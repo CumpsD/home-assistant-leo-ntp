@@ -29,7 +29,7 @@ If you have any issues with this you need to open an issue here:
 {issueurl}
 -------------------------------------------------------------------
 """.format(
-    name=NAME, version=VERSION, issueurl=ISSUEURL
+    name = NAME, version = VERSION, issueurl = ISSUEURL
 )
 
 WEBSITE = "https://www.leobodnar.com/"

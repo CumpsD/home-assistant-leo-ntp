@@ -34,13 +34,13 @@ class LeoNtpEntity(CoordinatorEntity[LeoNtpDataUpdateCoordinator]):
         self.entity_description = description
         self._item = item
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, str(self.item.device_key))},
-            name=f"{NAME} {self.item.device_name}",
-            manufacturer=NAME,
-            configuration_url=WEBSITE,
-            entry_type=DeviceEntryType.SERVICE,
-            model=self.item.device_model,
-            sw_version=VERSION,
+            identifiers = {(DOMAIN, str(self.item.device_key))},
+            name = f"{NAME} {self.item.device_name}",
+            manufacturer = NAME,
+            configuration_url = WEBSITE,
+            entry_type = DeviceEntryType.SERVICE,
+            model = self.item.device_model,
+            sw_version = VERSION,
         )
         """
         extra attributes!

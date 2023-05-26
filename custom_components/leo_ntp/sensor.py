@@ -28,40 +28,40 @@ class LeoNtpSensorDescription(SensorEntityDescription):
 
 SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
     LeoNtpSensorDescription(
-        key="utc_time",
-        icon="mdi:clock-digital"
+        key = "utc_time",
+        icon = "mdi:clock-digital"
     ),
     LeoNtpSensorDescription(
-        key="ntp_time",
-        icon="mdi:clock-digital"
+        key = "ntp_time",
+        icon = "mdi:clock-digital"
     ),
     LeoNtpSensorDescription(
-        key="requests_served",
-        icon="mdi:account-search-outline"
+        key = "requests_served",
+        icon = "mdi:account-search-outline"
     ),
     LeoNtpSensorDescription(
-        key="uptime",
-        icon="mdi:timer-sand"
+        key = "uptime",
+        icon = "mdi:timer-sand"
     ),
     LeoNtpSensorDescription(
-        key="gps_lock_time",
-        icon="mdi:timer-lock-open-outline"
+        key = "gps_lock_time",
+        icon = "mdi:timer-lock-open-outline"
     ),
     LeoNtpSensorDescription(
-        key="gps_flags",
-        icon="mdi:file-certificate-outline"
+        key = "gps_flags",
+        icon = "mdi:file-certificate-outline"
     ),
     LeoNtpSensorDescription(
-        key="satellites",
-        icon="mdi:satellite-uplink"
+        key = "satellites",
+        icon = "mdi:satellite-uplink"
     ),
     LeoNtpSensorDescription(
-        key="firmware_version",
-        icon="mdi:tag"
+        key = "firmware_version",
+        icon = "mdi:tag"
     ),
     LeoNtpSensorDescription(
-        key="serial_number",
-        icon="mdi:tag-text"
+        key = "serial_number",
+        icon = "mdi:tag-text"
     ),
 ]
 
@@ -93,20 +93,20 @@ async def async_setup_entry(
                     native_unit_of_measurement = description.native_unit_of_measurement
 
                 sensor_description = LeoNtpSensorDescription(
-                    key=str(item.key),
-                    name=item.name,
-                    value_fn=description.value_fn,
-                    native_unit_of_measurement=native_unit_of_measurement,
-                    icon=description.icon,
-                    translation_key=description.translation_key,
+                    key = str(item.key),
+                    name = item.name,
+                    value_fn = description.value_fn,
+                    native_unit_of_measurement = native_unit_of_measurement,
+                    icon = description.icon,
+                    translation_key = description.translation_key,
                 )
 
                 log_debug(f"[sensor|async_setup_entry|adding] {item.name}")
                 entities.append(
                     LeoNtpSensor(
-                        coordinator=coordinator,
-                        description=sensor_description,
-                        item=item,
+                        coordinator = coordinator,
+                        description = sensor_description,
+                        item = item,
                     )
                 )
             else:

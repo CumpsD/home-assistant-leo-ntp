@@ -24,8 +24,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
 
     client = LeoNtpClient(
-        host=entry.data[CONF_HOST],
-        update_interval=entry.data[CONF_UPDATE_INTERVAL]
+        host = entry.data[CONF_HOST],
+        update_interva = entry.data[CONF_UPDATE_INTERVAL]
         if CONF_UPDATE_INTERVAL in entry.data
         else DEFAULT_UPDATE_INTERVAL,
     )
@@ -34,9 +34,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     hass.data[DOMAIN][entry.entry_id] = coordinator = LeoNtpDataUpdateCoordinator(
         hass,
-        config_entry_id=entry.entry_id,
-        dev_reg=dev_reg,
-        client=client,
+        config_entry_id = entry.entry_id,
+        dev_reg = dev_reg,
+        client = client,
     )
 
     await coordinator.async_config_entry_first_refresh()
@@ -76,8 +76,8 @@ class LeoNtpDataUpdateCoordinator(DataUpdateCoordinator):
         super().__init__(
             hass,
             _LOGGER,
-            name=DOMAIN,
-            update_interval=timedelta(seconds=self.client.update_interval),
+            name = DOMAIN,
+            update_interval = timedelta(seconds = self.client.update_interval),
         )
 
 

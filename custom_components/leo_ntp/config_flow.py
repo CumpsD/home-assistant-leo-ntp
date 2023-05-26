@@ -41,8 +41,8 @@ from .models import LeoNtpConfigEntryData
 from .utils import log_debug
 
 DEFAULT_ENTRY_DATA = LeoNtpConfigEntryData(
-    host=None,
-    update_interval=DEFAULT_UPDATE_INTERVAL,
+    host = None,
+    update_interval = DEFAULT_UPDATE_INTERVAL,
 )
 
 class LeoNtpCommonFlow(ABC, FlowHandler):
@@ -66,8 +66,8 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
         """Validate user credentials."""
 
         client = LeoNtpClient(
-            host=user_input[CONF_HOST],
-            update_interval=user_input[CONF_UPDATE_INTERVAL],
+            host = user_input[CONF_HOST],
+            update_interval = user_input[CONF_UPDATE_INTERVAL],
         )
 
         return await self.hass.async_add_executor_job(client.login)
@@ -95,19 +95,19 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
 
         fields = {
             vol.Required(CONF_HOST): TextSelector(
-                TextSelectorConfig(type=TextSelectorType.TEXT, autocomplete="host")
+                TextSelectorConfig(type = TextSelectorType.TEXT, autocomplete = "host")
             ),
             vol.Required(
-                CONF_UPDATE_INTERVAL, default=DEFAULT_UPDATE_INTERVAL
+                CONF_UPDATE_INTERVAL, default = DEFAULT_UPDATE_INTERVAL
             ): NumberSelector(
-                NumberSelectorConfig(min=1, max=60, step=1, mode=NumberSelectorMode.BOX)
+                NumberSelectorConfig(min = 1, max = 60, step = 1, mode = NumberSelectorMode.BOX)
             ),
         }
 
         return self.async_show_form(
-            step_id="connection_init",
-            data_schema=vol.Schema(fields),
-            errors=errors,
+            step_id = "connection_init",
+            data_schema = vol.Schema(fields),
+            errors = errors,
         )
 
     async def test_connection(self, user_input: dict | None = None) -> dict:
@@ -143,7 +143,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
 
             if not test["errors"]:
                 self.new_entry_data |= LeoNtpConfigEntryData(
-                    host=user_input[CONF_HOST],
+                    host = user_input[CONF_HOST],
                 )
                 return self.finish_flow()
 
@@ -152,12 +152,12 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
         }
 
         return self.async_show_form(
-            step_id="host",
-            data_schema=self.add_suggested_values_to_schema(
+            step_id = "host",
+            data_schema = self.add_suggested_values_to_schema(
                 vol.Schema(fields),
                 self.initial_data,
             ),
-            errors=errors,
+            errors = errors,
         )
 
     async def async_step_update_interval(
@@ -172,16 +172,16 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
 
         fields = {
             vol.Required(CONF_UPDATE_INTERVAL): NumberSelector(
-                NumberSelectorConfig(min=1, max=60, step=1, mode=NumberSelectorMode.BOX)
+                NumberSelectorConfig(min = 1, max = 60, step = 1, mode = NumberSelectorMode.BOX)
             ),
         }
         return self.async_show_form(
-            step_id="update_interval",
-            data_schema=self.add_suggested_values_to_schema(
+            step_id = "update_interval",
+            data_schema = self.add_suggested_values_to_schema(
                 vol.Schema(fields),
                 self.initial_data,
             ),
-            errors=errors,
+            errors = errors,
         )
 
 
@@ -193,7 +193,7 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
     def __init__(self, config_entry: ConfigEntry) -> None:
         """Initialize LeoNTP options flow."""
         self.config_entry = config_entry
-        super().__init__(initial_data=config_entry.data)  # type: ignore[arg-type]
+        super().__init__(initial_data = config_entry.data)  # type: ignore[arg-type]
 
     @callback
     def finish_flow(self) -> FlowResult:
@@ -202,15 +202,15 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
 
         self.hass.config_entries.async_update_entry(
             self.config_entry,
-            data=new_data,
-            title=self.new_title or UNDEFINED,
+            data = new_data,
+            title = self.new_title or UNDEFINED,
         )
 
         self.hass.async_create_task(
             self.hass.config_entries.async_reload(self.config_entry.entry_id)
         )
 
-        return self.async_create_entry(title="", data={})
+        return self.async_create_entry(title = "", data = {})
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
@@ -218,8 +218,8 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
         """Manage LeoNTP options."""
 
         return self.async_show_menu(
-            step_id="options_init",
-            menu_options=[
+            step_id = "options_init",
+            menu_options = [
                 "host",
                 "password",
                 "update_interval",
@@ -228,14 +228,14 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
         )
 
 
-class LeoNtpConfigFlow(LeoNtpCommonFlow, ConfigFlow, domain=DOMAIN):
+class LeoNtpConfigFlow(LeoNtpCommonFlow, ConfigFlow, domain = DOMAIN):
     """Handle a config flow for LeoNTP."""
 
     VERSION = 1
 
     def __init__(self) -> None:
         """Initialize LeoNTP Config Flow."""
-        super().__init__(initial_data=DEFAULT_ENTRY_DATA)
+        super().__init__(initial_data = DEFAULT_ENTRY_DATA)
 
     @staticmethod
     @callback
@@ -248,8 +248,8 @@ class LeoNtpConfigFlow(LeoNtpCommonFlow, ConfigFlow, domain=DOMAIN):
         """Create the ConfigEntry."""
         title = self.new_title or NAME
         return self.async_create_entry(
-            title=title,
-            data=DEFAULT_ENTRY_DATA | self.new_entry_data,
+            title = title,
+            data = DEFAULT_ENTRY_DATA | self.new_entry_data,
         )
 
     async def async_step_user(self, user_input: dict | None = None) -> FlowResult:

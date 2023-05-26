@@ -11,7 +11,7 @@ from .const import SHOW_DEBUG_AS_WARNING
 _LOGGER = logging.getLogger(__name__)
 
 
-def log_debug(input, force=False) -> None:
+def log_debug(input, force = False) -> None:
     """Log to logger as debug or force as warning."""
     if SHOW_DEBUG_AS_WARNING is True or force is True:
         _LOGGER.warning(input)
@@ -68,7 +68,7 @@ def sensor_name(string: str) -> str:
     return string
 
 
-def sizeof_fmt(num, suffix="b"):
+def sizeof_fmt(num, suffix = "b"):
     """Convert unit to human readable."""
     for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
         if abs(num) < 1024.0:
