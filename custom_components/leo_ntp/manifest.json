@@ -1,0 +1,13 @@
+{
+  "domain": "leo_ntp",
+  "name": "LeoNTP",
+  "codeowners": ["@CumpsD"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/CumpsD/home-assistant-leo-ntp",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/CumpsD/home-assistant-leo-ntp/issues",
+  "requirements": [],
+  "version": "v0.0.1"
+}
