@@ -1,13 +1,13 @@
 """Exceptions used by LeoNTP."""
 
 
-class LeoNTPException(Exception):
+class LeoNtpException(Exception):
     """Base class for all exceptions raised by LeoNTP."""
 
     pass
 
 
-class LeoNTPServiceException(Exception):
+class LeoNtpServiceException(Exception):
     """Raised when service is not available."""
 
     pass
