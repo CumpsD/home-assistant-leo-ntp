@@ -4,7 +4,6 @@ from abc import abstractmethod
 from typing import Any
 
 import voluptuous as vol
-import homeassistant.helpers.config_validation as cv
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.config_entries import ConfigFlow
@@ -84,9 +83,10 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             log_debug(test)
 
             if not test["errors"]:
-                self.new_title = test["profile"].get("name")
+                self.new_title = test["device"].get("name")
                 self.new_entry_data |= user_input
-                await self.async_set_unique_id(f"{DOMAIN}_" + test["profile"].get("id"))
+                await self.async_set_unique_id(f"{DOMAIN}_" + test["device"].get("id"))
+
                 self._abort_if_unique_id_configured()
                 log_debug(f"New server {self.new_title} added")
                 return self.finish_flow()
@@ -94,11 +94,11 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             errors = test["errors"]
 
         fields = {
-            vol.Required(CONF_HOST, description = "LeoNTP Hostname"): TextSelector(
+            vol.Required(CONF_HOST): TextSelector(
                 TextSelectorConfig(type = TextSelectorType.TEXT, autocomplete = "host")
             ),
-            vol.Required(CONF_UPDATE_INTERVAL, default = DEFAULT_UPDATE_INTERVAL, description = "Update Interval"): NumberSelector(
-                NumberSelectorConfig(min = 1, max = 60, step = 1, mode = NumberSelectorMode.BOX)
+            vol.Required(CONF_UPDATE_INTERVAL, default = DEFAULT_UPDATE_INTERVAL): NumberSelector(
+                NumberSelectorConfig(min = 1, max = 3600, step = 1, mode = NumberSelectorMode.BOX)
             ),
         }
 
@@ -111,13 +111,13 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
     async def test_connection(self, user_input: dict | None = None) -> dict:
         """Test the connection to LeoNTP."""
         errors: dict = {}
-        profile: dict = {}
+        device: dict = {}
 
         if user_input is not None:
             user_input = self.new_data() | user_input
 
             try:
-                profile = await self.async_validate_input(user_input)
+                device = await self.async_validate_input(user_input)
             except AssertionError as exception:
                 errors["base"] = "cannot_connect"
                 log_debug(f"[async_step_password|login] AssertionError {exception}")
@@ -129,7 +129,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
                 errors["base"] = "unknown"
                 log_debug(exception)
 
-        return {"profile": profile, "errors": errors}
+        return {"device": device, "errors": errors}
 
     async def async_step_host(self, user_input: dict | None = None) -> FlowResult:
         """Configure host."""
@@ -146,7 +146,9 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
                 return self.finish_flow()
 
         fields = {
-            vol.Required(CONF_HOST): cv.string,
+            vol.Required(CONF_HOST): TextSelector(
+                TextSelectorConfig(type = TextSelectorType.TEXT, autocomplete = "host")
+            ),
         }
 
         return self.async_show_form(
@@ -158,9 +160,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             errors = errors,
         )
 
-    async def async_step_update_interval(
-        self, user_input: dict | None = None
-    ) -> FlowResult:
+    async def async_step_update_interval(self, user_input: dict | None = None) -> FlowResult:
         """Configure update interval."""
         errors: dict = {}
 
@@ -170,7 +170,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
 
         fields = {
             vol.Required(CONF_UPDATE_INTERVAL): NumberSelector(
-                NumberSelectorConfig(min = 1, max = 60, step = 1, mode = NumberSelectorMode.BOX)
+                NumberSelectorConfig(min = 1, max = 3600, step = 1, mode = NumberSelectorMode.BOX)
             ),
         }
         return self.async_show_form(
@@ -219,9 +219,7 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
             step_id = "options_init",
             menu_options = [
                 "host",
-                "password",
                 "update_interval",
-                "sensors",
             ],
         )
 

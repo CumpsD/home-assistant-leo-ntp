@@ -1,3 +1,62 @@
 {
-
+  "config": {
+    "step": {
+      "connection_init": {
+        "title": "New LeoNTP Device",
+        "description": "Enter the LeoNTP hostname and configure the update interval for refreshing the sensors.",
+        "data": {
+          "host": "Hostname",
+          "update_interval": "Update interval (sec)"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Device is already configured"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "unknown": "Unexpected error",
+      "service_error": "Service unavailable"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Reconfigure LeoNTP",
+        "data": {
+          "host": "Hostname",
+          "update_interval": "Update interval (sec)"
+        }
+      },
+      "host": {
+        "title": "Update the LeoNTP Host Address",
+        "description": "To do when your LeoNTP Host address changed.",
+        "data": {
+          "host": "Hostname"
+        }
+      },
+      "update_interval": {
+        "title": "Update interval",
+        "description": "Set the update interval for refreshing the sensors.",
+        "data": {
+          "update_interval": "Update interval (min)"
+        }
+      },
+      "options_init": {
+        "title": "Change options",
+        "menu_options": {
+          "host": "Host",
+          "update_interval": "Update interval"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "unknown": "Unexpected error",
+      "service_error": "Service unavailable"
+    },
+    "abort": {
+      "already_configured": "Device is already configured"
+    }
+  }
 }
