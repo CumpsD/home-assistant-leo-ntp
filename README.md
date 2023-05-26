@@ -9,7 +9,7 @@ A Home Assistant integration to monitor LeoNTP
 
 ### Features
 
-- All possible LeoNTP 1200 sensors
+- All possible LeoNTP 1200 sensors.
 
 ---
 
