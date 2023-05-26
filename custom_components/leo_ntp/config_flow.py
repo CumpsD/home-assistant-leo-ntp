@@ -121,10 +121,10 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             except AssertionError as exception:
                 errors["base"] = "cannot_connect"
                 log_debug(f"[config_flow|test_connection] AssertionError {exception}")
-            except ConnectionError:
+            except ConnectionError as error:
                 errors["base"] = "cannot_connect"
-                log_debug(f"[config_flow|test_connection] ConnectionError {exception}")
-            except LeoNtpServiceException:
+                log_debug(f"[config_flow|test_connection] ConnectionError {error}")
+            except LeoNtpServiceException as exception:
                 errors["base"] = "service_error"
                 log_debug(f"[config_flow|test_connection] LeoNtpServiceException {exception}")
             except Exception as exception:

@@ -30,7 +30,7 @@ class LeoNtpClient:
 
 
     def validate_server(self):
-        """Validating LeoNTP connection."""
+        """Validate LeoNTP connection."""
 
         log_debug(f"[LeoNtpClient|validate_server] Validating connection to {self.host}")
 
@@ -95,7 +95,7 @@ class LeoNtpClient:
             ref_ts1          = struct.unpack('<I', response_packet[20:24])[0]                   # full seconds of NTP timestamp
             uptime           = struct.unpack('<I', response_packet[24:28])[0]
             ntp_served 	     = struct.unpack('<I', response_packet[28:32])[0]
-            cmd_served       = struct.unpack('<I', response_packet[32:36])[0]
+            # cmd_served       = struct.unpack('<I', response_packet[32:36])[0]
             gps_lock_time    = struct.unpack('<I', response_packet[36:40])[0]
             gps_flags        = response_packet[40]
             gps_satellites   = response_packet[41]
