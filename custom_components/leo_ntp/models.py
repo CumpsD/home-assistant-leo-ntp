@@ -19,6 +19,9 @@ class LeoNtpItem:
     key: str = ""
     type: str = ""
     state: str = ""
+    device_key: str = ""
+    device_name: str = ""
+    device_model: str = ""
     data: dict = field(default_factory = dict)
     extra_attributes: dict = field(default_factory = dict)
     native_unit_of_measurement: str = None
