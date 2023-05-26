@@ -14,6 +14,8 @@ PLATFORMS: Final = [Platform.SENSOR]
 
 ATTRIBUTION: Final = "Data provided by LeoNTP"
 
+PORT = 123
+
 manifestfile = Path(__file__).parent / "manifest.json"
 with open(manifestfile) as json_file:
     manifest_data = json.load(json_file)

@@ -69,7 +69,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
             update_interval = user_input[CONF_UPDATE_INTERVAL],
         )
 
-        return await self.hass.async_add_executor_job(client.fetch_data)
+        return await self.hass.async_add_executor_job(client.validate_server)
 
     async def async_step_connection_init(
         self, user_input: dict | None = None
@@ -80,7 +80,7 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
         if user_input is not None:
             user_input = self.new_data() | user_input
             test = await self.test_connection(user_input)
-            log_debug(test)
+            log_debug(f"[config_flow|async_step_connection_init] test_connection: {test}")
 
             if not test["errors"]:
                 self.new_title = test["device"].get("name")
