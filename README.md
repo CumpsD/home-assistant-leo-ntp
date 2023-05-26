@@ -1,7 +1,12 @@
-<img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/1200.jpg"
+<!-- <img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/1200.jpg"
      alt="LeoNTP"
      align="right"
-     style="width: 200px;margin-right: 10px;" />
+     style="width: 200px;margin-right: 10px;" /> -->
+
+<img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/brand/icon@2x.png"
+     alt="LeoNTP"
+     align="right"
+     style="width: 124px;margin-right: 10px;" />
 
 # LeoNTP for Home Assistant
 
