@@ -71,14 +71,14 @@ class LeoNtpEntity(CoordinatorEntity[LeoNtpDataUpdateCoordinator]):
 
     @property
     def item(self) -> LeoNtpItem:
-        """Return the product for this entity."""
+        """Return the item for this entity."""
         return self._item
 
     @property
     def available(self) -> bool:
         """Return if entity is available."""
-        return True
+        return self._item is not None
 
     async def async_update(self) -> None:
-        """Update the entity.  Only used by the generic entity update service."""
+        """Update the entity. Only used by the generic entity update service."""
         return

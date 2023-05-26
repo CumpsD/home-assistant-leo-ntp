@@ -88,18 +88,16 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
                 self.new_entry_data |= user_input
                 await self.async_set_unique_id(f"{DOMAIN}_" + test["profile"].get("id"))
                 self._abort_if_unique_id_configured()
-                log_debug(f"New account {self.new_title} added")
+                log_debug(f"New server {self.new_title} added")
                 return self.finish_flow()
 
             errors = test["errors"]
 
         fields = {
-            vol.Required(CONF_HOST): TextSelector(
+            vol.Required(CONF_HOST, description = "LeoNTP Hostname"): TextSelector(
                 TextSelectorConfig(type = TextSelectorType.TEXT, autocomplete = "host")
             ),
-            vol.Required(
-                CONF_UPDATE_INTERVAL, default = DEFAULT_UPDATE_INTERVAL
-            ): NumberSelector(
+            vol.Required(CONF_UPDATE_INTERVAL, default = DEFAULT_UPDATE_INTERVAL, description = "Update Interval"): NumberSelector(
                 NumberSelectorConfig(min = 1, max = 60, step = 1, mode = NumberSelectorMode.BOX)
             ),
         }
