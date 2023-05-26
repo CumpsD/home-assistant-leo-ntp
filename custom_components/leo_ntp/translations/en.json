@@ -39,7 +39,7 @@
         "title": "Update interval",
         "description": "Set the update interval for refreshing the sensors.",
         "data": {
-          "update_interval": "Update interval (min)"
+          "update_interval": "Update interval (sec)"
         }
       },
       "options_init": {
