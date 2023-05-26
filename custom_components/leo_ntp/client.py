@@ -107,7 +107,30 @@ class LeoNtpClient:
             device_key = format_entity_name(f"{device_model} {id}")
             device_name = f"{ntp_server}:{PORT}"
 
-            key = format_entity_name(f"{id} id")
+            t = time.gmtime(ref_ts1 - TIME1970)
+            key = format_entity_name(f"{id} utc_time")
+            data[key] = LeoNtpItem(
+                name = "UTC Time",
+                key = key,
+                type = "utc_time",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = f"{t.tm_year}-{t.tm_mon:02d}-{t.tm_mday:02d} {t.tm_hour:02d}:{t.tm_min:02d}:{t.tm_sec + ref_ts0:.0f}",
+            )
+
+            key = format_entity_name(f"{id} ntp_time")
+            data[key] = LeoNtpItem(
+                name = "NTP Time",
+                key = key,
+                type = "ntp_time",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = f"{ref_ts1 + ref_ts0:02.0f}",
+            )
+
+            key = format_entity_name(f"{id} requests_served")
             data[key] = LeoNtpItem(
                 name = "NTP Requests",
                 key = key,
@@ -118,20 +141,71 @@ class LeoNtpClient:
                 state = ntp_served,
             )
 
-            # actual statistics received from the server
-            t = time.gmtime(ref_ts1 - TIME1970)
-            print("UTC time: %d-%02d-%02d %02d:%02d:%02.0f" % (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec + ref_ts0))
-            print("NTP time: %02.0f" % (ref_ts1 + ref_ts0))
+            key = format_entity_name(f"{id} uptime")
+            data[key] = LeoNtpItem(
+                name = "Uptime",
+                key = key,
+                type = "uptime",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = uptime,
+            )
 
-            print("Average load since restart: %02.0f requests per second" % (1.0 * NTP_served / uptime))
-            print("NTP requests served:", NTP_served)
-            print("Mode 6 requests served:", CMD_served)
-            print("Uptime:", uptime, "seconds (", uptime/86400, "days )")
-            print("GPS lock time:", lock_time, "seconds (", lock_time/86400, "days )")
-            print("GPS flags:", flags)
-            print("Active satellites:", numSV)
-            print("Firmware version: %x.%02x" % (FW_ver>>8, FW_ver&0xFF))
-            print("Serial number:", ser_num)
+            key = format_entity_name(f"{id} gps_lock_time")
+            data[key] = LeoNtpItem(
+                name = "GPS Lock Time",
+                key = key,
+                type = "gps_lock_time",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = gps_lock_time,
+            )
+
+            key = format_entity_name(f"{id} gps_flags")
+            data[key] = LeoNtpItem(
+                name = "GPS Flags",
+                key = key,
+                type = "gps_flags",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = gps_flags,
+            )
+
+            key = format_entity_name(f"{id} satellites")
+            data[key] = LeoNtpItem(
+                name = "GPS Satellites",
+                key = key,
+                type = "satellites",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = gps_satellites,
+            )
+
+            key = format_entity_name(f"{id} firmware_version")
+            data[key] = LeoNtpItem(
+                name = "Firmware Version",
+                key = key,
+                type = "firmware_version",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = f"{firmware_version >> 8:x}.{firmware_version & 0xFF:02x}",
+            )
+
+            key = format_entity_name(f"{id} serial_number")
+            data[key] = LeoNtpItem(
+                name = "Serial Number",
+                key = key,
+                type = "serial_number",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = serial_number,
+            )
 
         return data
-# id, name
+
