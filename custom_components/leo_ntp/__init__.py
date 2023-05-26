@@ -94,6 +94,10 @@ class LeoNtpDataUpdateCoordinator(DataUpdateCoordinator):
         except Exception as exception:
             raise UpdateFailed(f"Exception {exception}") from exception
 
+        log_debug(
+            f"[init|LeoNtpDataUpdateCoordinator|_async_update_data|items] {items}"
+        )
+
         items: list[LeoNtpItem] = items
 
         current_items = {
