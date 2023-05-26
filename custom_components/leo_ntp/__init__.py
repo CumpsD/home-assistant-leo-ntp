@@ -9,7 +9,6 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.helpers.update_coordinator import UpdateFailed
 
 from .client import LeoNtpClient
-from .const import _LOGGER
 from .const import CONF_UPDATE_INTERVAL
 from .const import DEFAULT_UPDATE_INTERVAL
 from .const import DOMAIN
@@ -17,6 +16,7 @@ from .const import PLATFORMS
 from .exceptions import LeoNtpException
 from .exceptions import LeoNtpServiceException
 from .models import LeoNtpItem
+from .utils import _LOGGER
 from .utils import log_debug
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
