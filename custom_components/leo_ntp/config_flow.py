@@ -62,14 +62,14 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
         return DEFAULT_ENTRY_DATA | self.initial_data | self.new_entry_data
 
     async def async_validate_input(self, user_input: dict[str, Any]) -> None:
-        """Validate user credentials."""
+        """Validate server configuration."""
 
         client = LeoNtpClient(
             host = user_input[CONF_HOST],
             update_interval = user_input[CONF_UPDATE_INTERVAL],
         )
 
-        return await self.hass.async_add_executor_job(client.login)
+        return await self.hass.async_add_executor_job(client.fetch_data)
 
     async def async_step_connection_init(
         self, user_input: dict | None = None
@@ -120,14 +120,16 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
                 device = await self.async_validate_input(user_input)
             except AssertionError as exception:
                 errors["base"] = "cannot_connect"
-                log_debug(f"[async_step_password|login] AssertionError {exception}")
+                log_debug(f"[config_flow|test_connection] AssertionError {exception}")
             except ConnectionError:
                 errors["base"] = "cannot_connect"
+                log_debug(f"[config_flow|test_connection] ConnectionError {exception}")
             except LeoNtpServiceException:
                 errors["base"] = "service_error"
+                log_debug(f"[config_flow|test_connection] LeoNtpServiceException {exception}")
             except Exception as exception:
                 errors["base"] = "unknown"
-                log_debug(exception)
+                log_debug(f"[config_flow|test_connection] Exception {exception}")
 
         return {"device": device, "errors": errors}
 
