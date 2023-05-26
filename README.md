@@ -39,7 +39,7 @@ A Home Assistant integration to monitor LeoNTP
 
 ### Manual
 
-1. Copy the `custom_components/leo_ntp` directory of this repository as `config/custom_components/leo_ntp` in your Home Assistant instalation.
+1. Copy the `custom_components/leo_ntp` directory of this repository as `config/custom_components/leo_ntp` in your Home Assistant installation.
 2. Restart Home Assistant.
 3. Add the '`leo_ntp`' integration via HA Settings > '`Devices and Services`' > '`Integrations`'.
 4. Provide the IP address of your LeoNTP.
