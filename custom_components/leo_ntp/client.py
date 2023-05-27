@@ -116,7 +116,7 @@ class LeoNtpClient:
                 device_key = device_key,
                 device_name = device_name,
                 device_model = device_model,
-                state = f"{t.tm_year}-{t.tm_mon:02d}-{t.tm_mday:02d} {t.tm_hour:02d}:{t.tm_min:02d}:{t.tm_sec + ref_ts0:.0f}",
+                state = f"{t.tm_year}-{t.tm_mon:02d}-{t.tm_mday:02d} {t.tm_hour:02d}:{t.tm_min:02d}:{t.tm_sec + ref_ts0:02.0f}",
             )
 
             key = format_entity_name(f"{id} ntp_time")
