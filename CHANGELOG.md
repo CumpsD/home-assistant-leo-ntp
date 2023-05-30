@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.0.0](https://github.com/CumpsD/home-assistant-leo-ntp/tree/v1.0.0) (2023-05-30)
+
+[Full Changelog](https://github.com/CumpsD/home-assistant-leo-ntp/compare/v0.1.2...v1.0.0)
+
+**Documentation:**
+
+- Add leo ntp lovelace screenshot [\#4](https://github.com/CumpsD/home-assistant-leo-ntp/pull/4) ([CumpsD](https://github.com/CumpsD))
+
+**Merged pull requests:**
+
+- Initial Release [\#3](https://github.com/CumpsD/home-assistant-leo-ntp/pull/3) ([CumpsD](https://github.com/CumpsD))
+
 ## [v0.1.2](https://github.com/CumpsD/home-assistant-leo-ntp/tree/v0.1.2) (2023-05-30)
 
 [Full Changelog](https://github.com/CumpsD/home-assistant-leo-ntp/compare/v0.1.1...v0.1.2)
