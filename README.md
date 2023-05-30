@@ -1,8 +1,3 @@
-<!-- <img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/1200.jpg"
-     alt="LeoNTP"
-     align="right"
-     style="width: 200px;margin-right: 10px;" /> -->
-
 <img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/brand/icon@2x.png"
      alt="LeoNTP"
      align="right"
@@ -24,16 +19,16 @@ A Home Assistant integration to monitor LeoNTP
 
 [![Open your Home Assistant instance and open the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg?style=flat-square)](https://my.home-assistant.io/redirect/hacs_repository/?owner=CumpsD&repository=home-assistant-leo-ntp&category=integration) -->
 
-<!-- [![Hacs and Hassfest validation](https://github.com/CumpsD/home-assistant-leo-ntp/actions/workflows/validate.yml/badge.svg)](https://github.com/CumpsD/home-assistant-leo-ntp/actions/workflows/validate.yml)
-[![Python](https://img.shields.io/badge/Python-FFD43B?logo=python)](https://github.com/CumpsD/home-assistant-leo-ntp/search?l=python) -->
+[![manifest version](https://img.shields.io/github/manifest-json/v/CumpsD/home-assistant-leo-ntp/master?filename=custom_components%2Fleo_ntp%2Fmanifest.json&style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp)
+[![github release](https://img.shields.io/github/v/release/CumpsD/home-assistant-leo-ntp?logo=github&style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/releases)
+[![github release date](https://img.shields.io/github/release-date/CumpsD/home-assistant-leo-ntp?style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/releases)
 
-[![github contributors](https://img.shields.io/github/contributors/CumpsD/home-assistant-leo-ntp)](https://github.com/CumpsD/home-assistant-leo-ntp/graphs/contributors)
-[![github commit activity](https://img.shields.io/github/commit-activity/y/CumpsD/home-assistant-leo-ntp?logo=github)](https://github.com/CumpsD/home-assistant-leo-ntp/commits/main)
-[![github last-commit](https://img.shields.io/github/last-commit/CumpsD/home-assistant-leo-ntp)](https://github.com/CumpsD/home-assistant-leo-ntp/commits)
+[![github contributors](https://img.shields.io/github/contributors/CumpsD/home-assistant-leo-ntp?style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/graphs/contributors)
+[![github commit activity](https://img.shields.io/github/commit-activity/y/CumpsD/home-assistant-leo-ntp?logo=github&style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/commits/main)
+[![github last-commit](https://img.shields.io/github/last-commit/CumpsD/home-assistant-leo-ntp?style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/commits)
 
-[![manifest version](https://img.shields.io/github/manifest-json/v/CumpsD/home-assistant-leo-ntp/master?filename=custom_components%2Fleo_ntp%2Fmanifest.json)](https://github.com/CumpsD/home-assistant-leo-ntp)
-[![github release](https://img.shields.io/github/v/release/CumpsD/home-assistant-leo-ntp?logo=github)](https://github.com/CumpsD/home-assistant-leo-ntp/releases)
-[![github release date](https://img.shields.io/github/release-date/CumpsD/home-assistant-leo-ntp)](https://github.com/CumpsD/home-assistant-leo-ntp/releases)
+[![Code Linting](https://img.shields.io/github/actions/workflow/status/CumpsD/home-assistant-leo-ntp/lint.yml?label=lint&style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/actions/workflows/lint.yml)
+[![Hacs and Hassfest validation](https://img.shields.io/github/actions/workflow/status/CumpsD/home-assistant-leo-ntp/validate.yml?label=validate&style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/actions/workflows/validate.yml)
 
 ## Installation
 
