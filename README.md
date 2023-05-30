@@ -62,4 +62,4 @@ logger:
 
 ## Screenshots
 
-![LeoNTP Lovelace](https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/assets/images/leo_ntp.png "LeoNTP Lovelace")
+![LeoNTP Lovelace](https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/leo_ntp.png "LeoNTP Lovelace")
