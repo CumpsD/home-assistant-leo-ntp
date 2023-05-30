@@ -64,3 +64,8 @@ jobs:
           prWoLabels: true
           unreleased: false
           addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["documentation"]}}'
+
+      - name: ✅　Commit release notes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Commit release notes
