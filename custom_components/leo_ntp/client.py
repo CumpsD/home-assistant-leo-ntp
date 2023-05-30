@@ -102,6 +102,8 @@ class LeoNtpClient:
             serial_number    = struct.unpack('<H', response_packet[42:44])[0]
             firmware_version = struct.unpack('<I', response_packet[44:48])[0]
 
+            gps_lock = (gps_flags & 1) == 1;
+
             id = serial_number
             device_model = DOMAIN.title()
             device_key = format_entity_name(f"{device_model} {id}")
@@ -150,6 +152,17 @@ class LeoNtpClient:
                 device_name = device_name,
                 device_model = device_model,
                 state = uptime,
+            )
+
+            key = format_entity_name(f"{id} gps_lock")
+            data[key] = LeoNtpItem(
+                name = "GPS Lock",
+                key = key,
+                type = "gps_lock",
+                device_key = device_key,
+                device_name = device_name,
+                device_model = device_model,
+                state = gps_lock,
             )
 
             key = format_entity_name(f"{id} gps_lock_time")

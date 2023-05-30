@@ -44,6 +44,10 @@ SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
         icon = "mdi:timer-sand"
     ),
     LeoNtpSensorDescription(
+        key = "gps_lock",
+        icon = "mdi:check-decagram-outline"
+    ),
+    LeoNtpSensorDescription(
         key = "gps_lock_time",
         icon = "mdi:timer-lock-open-outline"
     ),
