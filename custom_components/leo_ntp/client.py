@@ -102,7 +102,7 @@ class LeoNtpClient:
             serial_number    = struct.unpack('<H', response_packet[42:44])[0]
             firmware_version = struct.unpack('<I', response_packet[44:48])[0]
 
-            gps_lock = (gps_flags & 1) == 1;
+            gps_lock = (gps_flags & 1) == 1
 
             id = serial_number
             device_model = DOMAIN.title()
