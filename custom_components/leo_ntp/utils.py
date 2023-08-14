@@ -26,7 +26,7 @@ def str_to_float(input) -> float:
 
 def float_to_timestring(float_time, unit_type) -> str:
     """Transform float to timestring."""
-    if type(float_time) is str:
+    if isinstance(float_time, str):
         float_time = str_to_float(float_time)
 
     if unit_type.lower() == "seconds":
