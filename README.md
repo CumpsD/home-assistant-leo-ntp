@@ -32,6 +32,19 @@ A Home Assistant integration to monitor LeoNTP
 
 ## Installation
 
+### Using [HACS](https://hacs.xyz/) (recommended)
+
+**Click on this button:**
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=CumpsD&repository=home-assistant-leo-ntp&category=integration)
+
+**or follow these steps:**
+
+1. Simply search for `LeoNTP` in HACS and install it easily.
+2. Restart Home Assistant.
+3. Add the '`LeoNTP`' integration via HA Settings > '`Devices and Services`' > '`Integrations`'.
+4. Provide the IP address of your LeoNTP.
+
 ### Manual
 
 1. Copy the `custom_components/leo_ntp` directory of this repository as `config/custom_components/leo_ntp` in your Home Assistant installation.
