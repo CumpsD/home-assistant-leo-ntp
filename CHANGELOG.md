@@ -1,5 +1,24 @@
 # Changelog
 
+## [v1.1.0](https://github.com/CumpsD/home-assistant-leo-ntp/tree/v1.1.0) (2023-08-27)
+
+[Full Changelog](https://github.com/CumpsD/home-assistant-leo-ntp/compare/v1.0.0...v1.1.0)
+
+**Merged pull requests:**
+
+- docs: add hacs url [\#16](https://github.com/CumpsD/home-assistant-leo-ntp/pull/16) ([CumpsD](https://github.com/CumpsD))
+- build\(deps\): bump ruff from 0.0.284 to 0.0.285 [\#15](https://github.com/CumpsD/home-assistant-leo-ntp/pull/15) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.282 to 0.0.284 [\#14](https://github.com/CumpsD/home-assistant-leo-ntp/pull/14) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.280 to 0.0.282 [\#13](https://github.com/CumpsD/home-assistant-leo-ntp/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.278 to 0.0.280 [\#12](https://github.com/CumpsD/home-assistant-leo-ntp/pull/12) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/setup-python from 4.6.1 to 4.7.0 [\#11](https://github.com/CumpsD/home-assistant-leo-ntp/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.277 to 0.0.278 [\#10](https://github.com/CumpsD/home-assistant-leo-ntp/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<23.2,\>=8.0.3 to \>=8.0.3,\<23.3 [\#9](https://github.com/CumpsD/home-assistant-leo-ntp/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.275 to 0.0.277 [\#8](https://github.com/CumpsD/home-assistant-leo-ntp/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.272 to 0.0.275 [\#7](https://github.com/CumpsD/home-assistant-leo-ntp/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.270 to 0.0.272 [\#6](https://github.com/CumpsD/home-assistant-leo-ntp/pull/6) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Fix screenshot [\#5](https://github.com/CumpsD/home-assistant-leo-ntp/pull/5) ([CumpsD](https://github.com/CumpsD))
+
 ## [v1.0.0](https://github.com/CumpsD/home-assistant-leo-ntp/tree/v1.0.0) (2023-05-30)
 
 [Full Changelog](https://github.com/CumpsD/home-assistant-leo-ntp/compare/v0.1.2...v1.0.0)
