@@ -13,23 +13,23 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: ⤵️　Checkout code
+      - name: ⤵️ Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
-      - name: 🗑　Delete drafts
+      - name: 🗑 Delete drafts
         uses: hugo19941994/delete-draft-releases@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📝　Draft release
+      - name: 📝 Draft release
         uses: release-drafter/release-drafter@v5
         id: release_drafter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🔄　Update version in 'VERSION' and 'manifest.json' and push changes
+      - name: 🔄 Update version in 'VERSION' and 'manifest.json' and push changes
         env:
           tag_name: ${{ steps.release_drafter.outputs.tag_name }}
           GITHUB_REPO: leo_ntp
@@ -41,12 +41,12 @@ jobs:
           cat custom_components/$GITHUB_REPO/manifest.json
           echo $tag_name > VERSION
 
-      - name: 🚀　Add and commit changes
+      - name: 🚀 Add and commit changes
         uses: EndBug/add-and-commit@v9
         with:
           message: Bump version
 
-      - name: 📝　Publish release
+      - name: 📝 Publish release
         uses: release-drafter/release-drafter@v5
         id: release_published
         env:
@@ -54,7 +54,7 @@ jobs:
         with:
           publish: true
 
-      - name: "✏️　Generate release changelog"
+      - name: "✏️ Generate release changelog"
         uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -65,7 +65,7 @@ jobs:
           unreleased: false
           addSections: '{"documentation":{"prefix":"**Documentation:**","labels":["documentation"]}}'
 
-      - name: ✅　Commit release notes
+      - name: ✅ Commit release notes
         uses: EndBug/add-and-commit@v9
         with:
           message: Commit release notes

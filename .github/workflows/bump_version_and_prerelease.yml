@@ -13,12 +13,12 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: ⤵️　 Checkout code
+      - name: ⤵️ Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
-      - name: 📝　Draft release
+      - name: 📝 Draft release
         uses: release-drafter/release-drafter@v5
         id: release_drafter
         env:
@@ -27,7 +27,7 @@ jobs:
           prerelease: true
           publish: false
 
-      - name: 🔄　Update version in 'VERSION' and 'manifest.json' and push changes
+      - name: 🔄 Update version in 'VERSION' and 'manifest.json' and push changes
         env:
           tag_name: ${{ steps.release_drafter.outputs.tag_name }}
           GITHUB_REPO: ${{ github.event.repository.name }}
