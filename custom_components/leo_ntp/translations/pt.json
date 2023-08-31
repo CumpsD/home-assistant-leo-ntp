@@ -46,7 +46,7 @@
         "title": "Mudar Opcções",
         "menu_options": {
           "host": "Host",
-          "update_interval": "Update interval"
+          "update_interval": "Tempo de atualização (sec)"
         }
       }
     },
