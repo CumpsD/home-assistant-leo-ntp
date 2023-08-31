@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.2.0](https://github.com/CumpsD/home-assistant-leo-ntp/tree/v1.2.0) (2023-08-31)
+
+[Full Changelog](https://github.com/CumpsD/home-assistant-leo-ntp/compare/v1.1.0...v1.2.0)
+
+**Merged pull requests:**
+
+- Create pt.json [\#18](https://github.com/CumpsD/home-assistant-leo-ntp/pull/18) ([ViPeR5000](https://github.com/ViPeR5000))
+- build\(deps\): bump ruff from 0.0.285 to 0.0.286 [\#17](https://github.com/CumpsD/home-assistant-leo-ntp/pull/17) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.1.0](https://github.com/CumpsD/home-assistant-leo-ntp/tree/v1.1.0) (2023-08-27)
 
 [Full Changelog](https://github.com/CumpsD/home-assistant-leo-ntp/compare/v1.0.0...v1.1.0)
