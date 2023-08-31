@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "connection_init": {
+        "title": "Adicionar novo Equipamento LeoNTP ",
+        "description": "Adicionar o nome do LeoNTP e configurar os tempos de atualização dos sensores.",
+        "data": {
+          "host": "Hostname",
+          "update_interval": "Tempo de atualização (sec)"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Equipamento já configurado"
+    },
+    "error": {
+      "cannot_connect": "Falha na ligação",
+      "unknown": "Erro desconhecido",
+      "service_error": "Serviço indisponivel"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Reconfigurar LeoNTP",
+        "data": {
+          "host": "Hostname",
+          "update_interval": "Tempo de atualização (sec)"
+        }
+      },
+      "host": {
+        "title": "Atualizar o endereço do equipamento LeoNTP ",
+        "description": "A fazer caso o endereço do LeonNTP mude.",
+        "data": {
+          "host": "Hostname"
+        }
+      },
+      "update_interval": {
+        "title": "Tempo de atualização",
+        "description": "Para atualizar o tempo de atualização de sensores.",
+        "data": {
+          "update_interval": "Tempo de Atualização (sec)"
+        }
+      },
+      "options_init": {
+        "title": "Mudar Opcções",
+        "menu_options": {
+          "host": "Host",
+          "update_interval": "Update interval"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Falha na ligação",
+      "unknown": "Erro Desconhecido",
+      "service_error": "Serviço Indisponivel"
+    },
+    "abort": {
+      "already_configured": "Equipamento já foi configurado."
+    }
+  }
+}
