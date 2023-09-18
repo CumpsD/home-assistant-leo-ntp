@@ -13,7 +13,7 @@ A Home Assistant integration to monitor LeoNTP
 
 ---
 
-[![maintainer](https://img.shields.io/badge/maintainer-David%20Cumps-green?style=for-the-badge&logo=github)](https://github.com/CumpsD) [![MIT License](https://img.shields.io/github/license/CumpsD/home-assistant-leo-ntp?style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/blob/master/LICENSE) [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+[![maintainer](https://img.shields.io/badge/maintainer-David%20Cumps-green?style=for-the-badge&logo=github)](https://github.com/CumpsD) [![MIT License](https://img.shields.io/github/license/CumpsD/home-assistant-leo-ntp?style=for-the-badge)](https://github.com/CumpsD/home-assistant-leo-ntp/blob/master/LICENSE) [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
 <!-- [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
 
