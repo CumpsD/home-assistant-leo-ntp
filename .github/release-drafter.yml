@@ -5,53 +5,74 @@ template: |
 
   $CHANGES
   **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
-categories:
-  - title: 🚀 Features
-    labels:
-      - feature
-      - enhancement
-  - title: 🐛 Bug Fixes
-    labels:
-      - fix
-      - bug
-  - title: ⚠️ Breaking
-    labels:
-      - breaking
-  - title: ⚠️ Changes
-    labels:
-      - changed
-  - title: ⛔️ Deprecated
-    labels:
-      - deprecated
-  - title: 🗑 Removed
-    labels:
-      - removed
-  - title: 🔐 Security
-    labels:
-      - security
-  - title: 📄 Documentation
-    labels:
-      - docs
-      - documentation
-  - title: 🧩 Dependency Updates
-    labels:
-      - deps
-      - dependencies
-    collapse-after: 5
-
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
-version-resolver:
-  major:
-    labels:
-      - major
-  minor:
-    labels:
-      - minor
-  patch:
-    labels:
-      - patch
-  default: patch
 
-exclude-labels:
-  - skip-changelog
+categories:
+  - type: pre-exclude
+    when:
+      label: skip-changelog
+
+  # Version resolution. Order matters: the first exclusive match wins.
+  # Dependency PRs always count as patch. Dependabot adds the repo's
+  # major/minor/patch label from the dependency's own semver bump (e.g. a
+  # GitHub Actions major), which says nothing about this integration's API.
+  - type: version-resolver
+    semver-increment: patch
+    exclusive: true
+    when:
+      labels:
+        - deps
+        - dependencies
+  - type: version-resolver
+    semver-increment: major
+    when:
+      label: major
+  - type: version-resolver
+    semver-increment: minor
+    when:
+      label: minor
+  - type: version-resolver
+    semver-increment: patch
+    when:
+      label: patch
+  - type: version-resolver # fallback when nothing above matches
+    semver-increment: patch
+
+  # Changelog sections
+  - title: 🚀 Features
+    when:
+      labels:
+        - feature
+        - enhancement
+  - title: 🐛 Bug Fixes
+    when:
+      labels:
+        - fix
+        - bug
+  - title: ⚠️ Breaking
+    when:
+      label: breaking
+  - title: ⚠️ Changes
+    when:
+      label: changed
+  - title: ⛔️ Deprecated
+    when:
+      label: deprecated
+  - title: 🗑 Removed
+    when:
+      label: removed
+  - title: 🔐 Security
+    when:
+      label: security
+  - title: 📄 Documentation
+    when:
+      labels:
+        - docs
+        - documentation
+  - title: 🧩 Dependency Updates
+    collapse-after: 5
+    when:
+      labels:
+        - deps
+        - dependencies
