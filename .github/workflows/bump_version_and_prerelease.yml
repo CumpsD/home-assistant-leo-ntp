@@ -6,8 +6,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  create_release_draft:
-    name: Create the release draft
+  create_prerelease:
+    name: Create the pre-release
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,19 +18,40 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
-      - name: 📝 Draft release
-        uses: release-drafter/release-drafter@v7
-        id: release_drafter
+      - name: 🗑 Delete drafts
+        uses: hugo19941994/delete-draft-releases@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📝 Draft pre-release
+        uses: release-drafter/release-drafter@v7
+        id: release_drafter
         with:
+          config-name: release-drafter-beta.yml
           prerelease: true
-          publish: false
+          prerelease-identifier: beta
 
       - name: 🔄 Update version in 'VERSION' and 'manifest.json' and push changes
         env:
           tag_name: ${{ steps.release_drafter.outputs.tag_name }}
-          GITHUB_REPO: ${{ github.event.repository.name }}
+          GITHUB_REPO: leo_ntp
         run: |
           echo "** Manifest before replace **"
-          echo $tag_name
+          cat custom_components/$GITHUB_REPO/manifest.json
+          sed -i 's/"version": ".*"/"version": "'$tag_name'"/g' custom_components/$GITHUB_REPO/manifest.json
+          echo "** Manifest after replace **"
+          cat custom_components/$GITHUB_REPO/manifest.json
+          echo $tag_name > VERSION
+
+      - name: 🚀 Add and commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Bump version
+
+      - name: 📝 Publish pre-release
+        uses: release-drafter/release-drafter@v7
+        with:
+          config-name: release-drafter-beta.yml
+          prerelease: true
+          prerelease-identifier: beta
+          publish: true
