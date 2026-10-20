@@ -221,4 +221,3 @@ class LeoNtpClient:
             )
 
         return data
-

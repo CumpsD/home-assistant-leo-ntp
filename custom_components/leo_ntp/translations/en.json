@@ -22,9 +22,9 @@
   "options": {
     "step": {
       "init": {
-        "title": "Reconfigure LeoNTP",
-        "data": {
-          "host": "Hostname",
+        "title": "Change options",
+        "menu_options": {
+          "host": "Host",
           "update_interval": "Update interval (sec)"
         }
       },
@@ -39,13 +39,6 @@
         "title": "Update interval",
         "description": "Set the update interval for refreshing the sensors.",
         "data": {
-          "update_interval": "Update interval (sec)"
-        }
-      },
-      "options_init": {
-        "title": "Change options",
-        "menu_options": {
-          "host": "Host",
           "update_interval": "Update interval (sec)"
         }
       }
