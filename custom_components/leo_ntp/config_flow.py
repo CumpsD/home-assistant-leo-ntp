@@ -47,11 +47,15 @@ DEFAULT_ENTRY_DATA = LeoNtpConfigEntryData(
 class LeoNtpCommonFlow(ABC, FlowHandler):
     """Base class for LeoNTP flows."""
 
-    def __init__(self, initial_data: LeoNtpConfigEntryData) -> None:
+    def __init__(self) -> None:
         """Initialize LeoNtpCommonFlow."""
-        self.initial_data = initial_data
         self.new_entry_data = LeoNtpConfigEntryData()
         self.new_title: str | None = None
+
+    @property
+    @abstractmethod
+    def initial_data(self) -> LeoNtpConfigEntryData:
+        """Return the data the flow starts from."""
 
     @abstractmethod
     def finish_flow(self) -> FlowResult:
@@ -188,12 +192,10 @@ class LeoNtpCommonFlow(ABC, FlowHandler):
 class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
     """Handle LeoNTP options."""
 
-    general_settings: dict
-
-    def __init__(self, config_entry: ConfigEntry) -> None:
-        """Initialize LeoNTP options flow."""
-        self.config_entry = config_entry
-        super().__init__(initial_data = config_entry.data)  # type: ignore[arg-type]
+    @property
+    def initial_data(self) -> LeoNtpConfigEntryData:
+        """Return the current config entry data."""
+        return self.config_entry.data  # type: ignore[return-value]
 
     @callback
     def finish_flow(self) -> FlowResult:
@@ -218,7 +220,7 @@ class LeoNtpOptionsFlow(LeoNtpCommonFlow, OptionsFlow):
         """Manage LeoNTP options."""
 
         return self.async_show_menu(
-            step_id = "options_init",
+            step_id = "init",
             menu_options = [
                 "host",
                 "update_interval",
@@ -231,15 +233,16 @@ class LeoNtpConfigFlow(LeoNtpCommonFlow, ConfigFlow, domain = DOMAIN):
 
     VERSION = 1
 
-    def __init__(self) -> None:
-        """Initialize LeoNTP Config Flow."""
-        super().__init__(initial_data = DEFAULT_ENTRY_DATA)
+    @property
+    def initial_data(self) -> LeoNtpConfigEntryData:
+        """Return the defaults for a new config entry."""
+        return DEFAULT_ENTRY_DATA
 
     @staticmethod
     @callback
     def async_get_options_flow(config_entry: ConfigEntry) -> LeoNtpOptionsFlow:
         """Get the options flow for this handler."""
-        return LeoNtpOptionsFlow(config_entry)
+        return LeoNtpOptionsFlow()
 
     @callback
     def finish_flow(self) -> FlowResult:

@@ -1,4 +1,4 @@
-<img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/images/brand/icon@2x.png"
+<img src="https://github.com/CumpsD/home-assistant-leo-ntp/raw/main/custom_components/leo_ntp/brand/icon@2x.png"
      alt="LeoNTP"
      align="right"
      style="width: 124px;margin-right: 10px;" />

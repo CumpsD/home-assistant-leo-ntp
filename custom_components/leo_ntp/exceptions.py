@@ -11,4 +11,3 @@ class LeoNtpServiceException(Exception):
     """Raised when service is not available."""
 
     pass
-
